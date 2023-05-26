@@ -15,9 +15,21 @@ namespace QuanLyKho.Controllers
         private QLKhoDBContext db = new QLKhoDBContext();
 
         // GET: NHACUNGCAPs
-        public ActionResult Index()
+        public ActionResult Index(String thanhPho)
         {
-            return View(db.NHACUNGCAPs.ToList());
+            var nhaCungCap = db.NHACUNGCAPs.AsQueryable();
+
+            if (!string.IsNullOrEmpty(thanhPho))
+            {
+                var diaChiFilter = thanhPho.Trim().ToLower();
+                var diaChiFilterEnd = diaChiFilter.Split(',').LastOrDefault()?.Trim();
+                if (!string.IsNullOrEmpty(diaChiFilterEnd))
+                {
+                    nhaCungCap = nhaCungCap.Where(ncc => ncc.DiachiNCC.ToLower().EndsWith(diaChiFilterEnd));
+                }
+            }
+
+            return View(nhaCungCap.ToList());
         }
 
         // GET: NHACUNGCAPs/Details/5
@@ -115,6 +127,26 @@ namespace QuanLyKho.Controllers
             return RedirectToAction("Index");
         }
 
+        [HttpPost]
+        public ActionResult DeleteSelected(string[] selectedIds)
+        {
+            if (selectedIds != null && selectedIds.Length > 0)
+            {
+                foreach (var id in selectedIds)
+                {
+                    if (int.TryParse(id, out int Id))
+                    {
+                        var xoa = db.NHACUNGCAPs.Find(Id);
+                        if (xoa != null)
+                        {
+                            db.NHACUNGCAPs.Remove(xoa);
+                        }
+                    }
+                }
+                db.SaveChanges();
+            }
+            return new EmptyResult();
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

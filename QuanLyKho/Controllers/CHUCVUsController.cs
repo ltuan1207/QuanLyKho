@@ -114,16 +114,16 @@ namespace QuanLyKho.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
+        [HttpPost]
         public ActionResult DeleteSelected(string[] selectedIds)
         {
             if (selectedIds != null && selectedIds.Length > 0)
             {
                 foreach (var id in selectedIds)
                 {
-                    if (int.TryParse(id, out int chucVuId))
+                    if (int.TryParse(id, out int Id))
                     {
-                        var chucVu = db.CHUCVUs.Find(chucVuId);
+                        var chucVu = db.CHUCVUs.Find(Id);
                         if (chucVu != null)
                         {
                             db.CHUCVUs.Remove(chucVu);

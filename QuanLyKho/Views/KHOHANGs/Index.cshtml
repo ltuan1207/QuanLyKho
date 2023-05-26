@@ -5,42 +5,40 @@
     Layout = "~/Views/Shared/_LayoutIndex.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Index kho hang</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.TenKhohang)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DiaChi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SDTKho)
-        </th>
-        <th></th>
-    </tr>
+<a href="@Url.Action("Create","KHOHANGs")" class="btn btn-sm btn-success" style="padding:8px">Thêm</a>
+<button id="deleteSelectedKH" class="btn btn-danger">Xóa các mục đã chọn</button>
+<div class=" card-body">
+    <table class="table table-bordered">
+        <tr>
+            <th><input type="checkbox" id="checkAll" /></th>
+            <th>Kho</th>
+            <th>Địa chỉ</th>
+            <th>Số điện thoại</th>
+            <th>Chưc năng</th>
+        </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.TenKhohang)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DiaChi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SDTKho)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.MaKhoHang }) |
-            @Html.ActionLink("Details", "Details", new { id=item.MaKhoHang }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.MaKhoHang })
-        </td>
-    </tr>
-}
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="text-center"><input type="checkbox" class="checkbox" value="@item.MaKhoHang" /></td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenKhohang)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DiaChi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SDTKho)
+                </td>
+                <td>
+                    <a href="@Url.Action("Edit","KHOHANGs",new { id = item.MaKhoHang})" class="btn btn-sm btn-success">Sửa</a>
+                    <a href="@Url.Action("Details","KHOHANGs",new { id = item.MaKhoHang })" class="btn btn-sm btn-info">Chi tiết</a>
+                    <a href="@Url.Action("Delete","KHOHANGs",new { id = item.MaKhoHang })" class="btn btn-sm btn-danger">Xóa</a>
+                </td>
+            </tr>
+        }
 
-</table>
+    </table>
+</div>

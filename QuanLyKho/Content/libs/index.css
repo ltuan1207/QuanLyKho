@@ -298,6 +298,24 @@ Leftsidebar - dark
     letter-spacing: 1px;
 }
 
+.sidebar-dark.nav-left-sidebar .nav-link i {
+    color: #7a80b4;
+}
+
+.sidebar-dark.nav-left-sidebar .navbar-nav .nav-item {}
+
+.sidebar-dark.nav-left-sidebar .navbar-nav .nav-link:focus,
+.sidebar-dark.nav-left-sidebar .navbar-nav .nav-link.active {
+    background-color: #242849;
+    color: #fff;
+    border-radius: 2px;
+}
+
+.sidebar-dark.nav-left-sidebar .navbar-nav .nav-item .badge{
+	position: absolute;
+	right: 40px;
+	display: none;
+}
 /* ----------------------- 
 Left Navigation Sidebar
 ------------------------- */
@@ -312,6 +330,29 @@ Left Navigation Sidebar
     -webkit-box-shadow: 0px 0px 28px 0px rgba(82, 63, 105, 0.13);
     box-shadow: 0px 0px 28px 0px rgba(82, 63, 105, 0.13);
     -webkit-transition: all 0.3s ease;
+}
+
+.nav-left-sidebar .nav-link[data-toggle="collapse"]::after {
+    display: inline-block;
+    width: 0;
+    height: 0;
+    margin: 12px;
+    position: absolute;
+    right: 20px;
+    vertical-align: 0.255em;
+    content: "";
+    border-top: 0.3em solid;
+    border-right: 0.3em solid transparent;
+    border-bottom: 0;
+    border-left: 0.3em solid transparent;
+}
+.nav-left-sidebar .nav-link[data-toggle="collapse"][aria-expanded="false"]:after {
+    transform: rotate(-90deg);
+}
+
+.nav-left-sidebar .nav-link[data-toggle="collapse"]:after {
+    transition: transform .35s ease, opacity .35s ease;
+    opacity: .5;
 }
 
 .nav-left-sidebar .navbar {
@@ -335,6 +376,13 @@ Left Navigation Sidebar
 .nav-left-sidebar .navbar-nav {
     width: 100%;
 }
+.nav-left-sidebar .nav-link i {
+    font-size: 14px;
+    margin-right: 9px;
+    text-align: center;
+    vertical-align: middle;
+    line-height: 16px;
+}
 
 .nav-divider {
     padding: 10px 14px;
@@ -342,4 +390,34 @@ Left Navigation Sidebar
     font-weight: 600;
     text-transform: uppercase;
     font-size: 12px;
+}
+.nav-left-sidebar .navbar-nav .nav-item {}
+
+.nav-left-sidebar .submenu {
+    padding-left: 12px;
+    padding-right: 12px;
+    /* margin-top: 5px; */
+    background: #24274a;
+}
+
+
+/*----------------------- 
+2.13 Badge
+-------------------------*/
+
+.badge {
+    display: inline-block;
+    padding: 3px 7px;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25rem;
+}
+
+
+.badge-success {
+    background-color: #21ae41;
 }

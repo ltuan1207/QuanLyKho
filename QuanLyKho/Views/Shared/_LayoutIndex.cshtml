@@ -63,10 +63,47 @@
                         <div class="collapse navbar-collapse" id="navbarNav">
                             <ul class="navbar-nav flex-column">
                                 <li class="nav-divider"> Menu </li>
-                                <li class="nav-divider"><a href="@Url.Action("Index", "SANPHAMs")" style="color:white"><i class="fas fa-box-open"></i>  San Pham</a></li>
-                                <li class="nav-divider"><a href="@Url.Action("Index", "NHOMSANPHAMs")" style="color:white"><i class="fas fa-boxes"></i>  Nhom San Pham</a></li>
-                                <li class="nav-divider"><a href="@Url.Action("Index", "NHANVIENs")" style="color:white"><i class="fas fa-id-card"></i>  Nhan Vien</a></li>
-                                <li class="nav-divider"><a href="@Url.Action("Index", "CHUVUs")" style="color:white"><i class="fas fa-user-tie"></i>  Chuc Vu</a></li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="#" data-toggle="collapse" aria-expanded="true" data-target="#submenu-1" aria-controls="submenu-1">
+                                        <i class="fa fa-fw fa-user-circle"></i>
+                                        Quản lý nhân viên
+                                        <span class="badge badge-success">6</span>
+                                    </a>
+                                    <div id="submenu-1" class="submenu collapse show">
+                                        <ul class="nav flex-column">
+                                            <li class="nav-divider"><a href="@Url.Action("Index", "NHANVIENs")" style="color:white"><i class="fas fa-id-card"></i>  Nhân Viên</a></li>
+                                            <li class="nav-divider"><a href="@Url.Action("Index", "CHUCVUs")" style="color:white"><i class="fas fa-user-tie"></i>  Chúc Vụ</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="#" data-toggle="collapse" aria-expanded="true" data-target="#submenu-2" aria-controls="submenu-2">
+                                        <i class="fas fa-archive"></i>
+                                        Quản lý hàng hóa
+                                        <span class="badge badge-success">6</span>
+                                    </a>
+                                    <div id="submenu-2" class="submenu collapse show">
+                                        <ul class="nav flex-column">
+                                            <li class="nav-divider"><a href="@Url.Action("Index", "SANPHAMs")" style="color:white"><i class="fas fa-box-open"></i>  Sản Phẩm</a></li>
+                                            <li class="nav-divider"><a href="@Url.Action("Index", "NHOMSANPHAMs")" style="color:white"><i class="fas fa-boxes"></i>  Nhóm Sản Phẩm</a></li>
+                                            <li class="nav-divider"><a href="@Url.Action("Index", "NHACUNGCAPs")" style="color:white"><i class="fas fa-building"></i>  Nhà cung cấp</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link active" href="#" data-toggle="collapse" aria-expanded="true" data-target="#submenu-3" aria-controls="submenu-3">
+                                        <i class="fas fa-map-marked-alt"></i>
+                                        Vị trí
+                                        <span class="badge badge-success">6</span>
+                                    </a>
+                                    <div id="submenu-3" class="submenu collapse show">
+                                        <ul class="nav flex-column">
+                                            <li class="nav-divider"><a href="@Url.Action("Index", "KHOHANGs")" style="color:white"><i class="fas fa-map-marker-alt"></i>   Kho hàng</a></li>
+                                            <li class="nav-divider"><a href="@Url.Action("Index", "VITRIKHOes")" style="color:white"><i class="fas fa-warehouse"></i> Vị trí trong kho</a></li>
+                                            <li class="nav-divider"><a href="@Url.Action("Index", "VITRISPs")" style="color:white"><i class="fas fa-pallet"></i> Vị trí sản phẩm</a></li>
+                                        </ul>
+                                    </div>
+                                </li>
                             </ul>
                         </div>
                     </nav>
