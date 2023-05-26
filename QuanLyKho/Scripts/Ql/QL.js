@@ -74,6 +74,58 @@ $('#deleteSelected').click(function () {
     }
 });
 
+$('#deleteSelected').click(function () {
+    var selectedIds = $('.checkbox:checked').map(function () {
+        return $(this).val();
+    }).get();
+
+    if (selectedIds.length === 0) {
+        alert('Vui lòng chọn ít nhất một mục để xóa.');
+    } else {
+        var confirmed = confirm('Bạn có chắc muốn xóa các mục đã chọn?');
+
+        if (confirmed) {
+            $.ajax({
+                url: '/NHOMSANPHAMs/DeleteSelected',
+                type: 'POST',
+                data: { selectedIds: selectedIds },
+                success: function () {
+                    location.reload();
+                },
+                error: function () {
+                    alert('Đã xảy ra lỗi khi xóa các mục đã chọn.');
+                }
+            });
+        }
+    }
+});
+
+$('#deleteSelected').click(function () {
+    var selectedIds = $('.checkbox:checked').map(function () {
+        return $(this).val();
+    }).get();
+
+    if (selectedIds.length === 0) {
+        alert('Vui lòng chọn ít nhất một mục để xóa.');
+    } else {
+        var confirmed = confirm('Bạn có chắc muốn xóa các mục đã chọn?');
+
+        if (confirmed) {
+            $.ajax({
+                url: '/CHUVUs/DeleteSelected',
+                type: 'POST',
+                data: { selectedIds: selectedIds },
+                success: function () {
+                    location.reload();
+                },
+                error: function () {
+                    alert('Đã xảy ra lỗi khi xóa các mục đã chọn.');
+                }
+            });
+        }
+    }
+});
+
 $(document).ready(function () {
     // Xử lý sự kiện khi checkbox "check all" được chọn/deselect
     $('#checkAll').change(function () {
