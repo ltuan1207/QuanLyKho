@@ -11,49 +11,38 @@
     <h4>NHANVIEN</h4>
     <hr />
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.CHUCVU.TenCV)
-        </dt>
+        <dt> Chức vụ:</dt>
 
         <dd>
             @Html.DisplayFor(model => model.CHUCVU.TenCV)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.TenNV)
-        </dt>
+        <dt>Họ và Tên </dt>
 
         <dd>
             @Html.DisplayFor(model => model.TenNV)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.Email)
-        </dt>
+        <dt>Gmail:<dt>
 
         <dd>
             @Html.DisplayFor(model => model.Email)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.MatKhau)
-        </dt>
+        <dt>Mật khẩu:</dt>
 
         <dd>
             @Html.DisplayFor(model => model.MatKhau)
         </dd>
 
-        <dt>
-            @Html.DisplayNameFor(model => model.ImgUrl)
-        </dt>
+        <dt>Hình ảnh:</dt>
 
         <dd>
             @Html.DisplayFor(model => model.ImgUrl)
         </dd>
-
     </dl>
 </div>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.MaNV }) |
-    @Html.ActionLink("Back to List", "Index")
+    <a href="@Url.Action("Edit","NHANVIENs",new { id = Model.MaNV})" class="btn btn-sm btn-success" style="padding:8px">Sửa</a>
+    <a href="@Url.Action("Index","NHANVIENs")" class="btn btn-sm btn-success" style="padding: 8px">Trở về <i class="fas fa-arrow-circle-left"></i></a>
 </p>
