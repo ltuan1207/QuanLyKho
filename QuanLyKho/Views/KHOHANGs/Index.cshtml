@@ -14,7 +14,18 @@
         <tr>
             <th><input type="checkbox" id="checkAll" /></th>
             <th>Kho</th>
-            <th>Địa chỉ</th>
+            <th>
+                <form method="get">
+                    <div class="form-group">
+                        <label>Địa chỉ:</label>
+                        <select name="thanhPho" class="form-control" onchange="this.form.submit()" style="width:129px">
+                            <option value="">--Thành phố--</option>
+                            <option value="TP.HCM">TP.HCM</option>
+                            <option value="TP.Hà Nội">TP.Hà Nội</option>
+                        </select>
+                    </div>
+                </form>
+            </th>
             <th>Số điện thoại</th>
             <th>Chưc năng</th>
         </tr>

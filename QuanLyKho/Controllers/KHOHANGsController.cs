@@ -15,9 +15,21 @@ namespace QuanLyKho.Controllers
         private QLKhoDBContext db = new QLKhoDBContext();
 
         // GET: KHOHANGs
-        public ActionResult Index()
+        public ActionResult Index(String thanhPho)
         {
-            return View(db.KHOHANGs.ToList());
+            var khohang = db.KHOHANGs.AsQueryable();
+
+            if (!string.IsNullOrEmpty(thanhPho))
+            {
+                var diaChiFilter = thanhPho.Trim().ToLower();
+                var diaChiFilterEnd = diaChiFilter.Split(',').LastOrDefault()?.Trim();
+                if (!string.IsNullOrEmpty(diaChiFilterEnd))
+                {
+                    khohang = khohang.Where(ncc => ncc.DiaChi.ToLower().EndsWith(diaChiFilterEnd));
+                }
+            }
+
+            return View(khohang.ToList());
         }
 
         // GET: KHOHANGs/Details/5

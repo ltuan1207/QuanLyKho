@@ -234,6 +234,59 @@ $('#deleteSelectedNCC').click(function () {
         }
     }
 });
+/*bắt sự kiện xóa các mục đã chọn bảng phieu nhap kho*/
+$('#deleteSelectedPNK').click(function () {
+    var selectedIds = $('.checkbox:checked').map(function () {
+        return $(this).val();
+    }).get();
+
+    if (selectedIds.length === 0) {
+        alert('Vui lòng chọn ít nhất một mục để xóa.');
+    } else {
+        var confirmed = confirm('Bạn có chắc muốn xóa các mục đã chọn?');
+
+        if (confirmed) {
+            $.ajax({
+                url: '/PHIEUNHAPKHOes/DeleteSelected',
+                type: 'POST',
+                data: { selectedIds: selectedIds },
+                success: function () {
+                    location.reload();
+                },
+                error: function () {
+                    alert('Đã xảy ra lỗi khi xóa các mục đã chọn.');
+                }
+            });
+        }
+    }
+});
+
+/*bắt sự kiện xóa các mục đã chọn bảng phieu nhap kho*/
+$('#deleteSelectedCTPNK').click(function () {
+    var selectedIds = $('.checkbox:checked').map(function () {
+        return $(this).val();
+    }).get();
+
+    if (selectedIds.length === 0) {
+        alert('Vui lòng chọn ít nhất một mục để xóa.');
+    } else {
+        var confirmed = confirm('Bạn có chắc muốn xóa các mục đã chọn?');
+
+        if (confirmed) {
+            $.ajax({
+                url: '/CTPHIEUNHAPKHOes/DeleteSelected',
+                type: 'POST',
+                data: { selectedIds: selectedIds },
+                success: function () {
+                    location.reload();
+                },
+                error: function () {
+                    alert('Đã xảy ra lỗi khi xóa các mục đã chọn.');
+                }
+            });
+        }
+    }
+});
 
 /*chọn tất cả */
 $(document).ready(function () {
