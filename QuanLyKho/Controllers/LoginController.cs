@@ -38,5 +38,14 @@ namespace QuanLyKho.Controllers
             }                   
             return View();
         }
+
+        public ActionResult Logout()
+        {
+            // Xóa session và cookie của user
+            Session.Clear();
+
+            // Redirect về trang đăng nhập
+            return RedirectToAction("Dangnhap", "Login");
+        }
     }
 }

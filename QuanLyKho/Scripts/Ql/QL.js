@@ -402,7 +402,7 @@ $(document).ready(function () {
         $('.checkbox').prop('checked', isChecked);
     });
 });
-
+/*tim kiem*/
 $(document).ready(function () {
     $('#search').keyup(function () {
         var searchText = $(this).val().toLowerCase();
@@ -412,6 +412,21 @@ $(document).ready(function () {
                 $(this).show();
             } else {
                 $(this).hide();
+            }
+        });
+    });
+});
+/*Đăng xuất xóa session*/
+$(document).ready(function () {
+    $("#logout-btn").click(function () {
+        $.ajax({
+            type: "POST",
+            url: "/Login/Logout",
+            success: function () {
+                window.location.href = "/Login/Dangnhap";
+            },
+            error: function () {
+                alert("Logout failed.");
             }
         });
     });
