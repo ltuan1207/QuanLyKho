@@ -12,8 +12,8 @@
     @Html.AntiForgeryToken()
     
     <div class="form-horizontal">
-        <h4>NHACUNGCAP</h4>
-        <hr />
+    <h4>NHACUNGCAP</h4>
+    <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
             @Html.LabelFor(model => model.TenNCC, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -41,12 +41,11 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Create" class="btn btn-sm btn-success" style="margin-right:5px" />
+                <a href="@Url.Action("Index","KHOHANGs")" class="btn btn-sm btn-success">Trở về <i class="fas fa-arrow-circle-left"></i></a>
             </div>
         </div>
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+

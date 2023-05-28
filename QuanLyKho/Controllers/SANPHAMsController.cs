@@ -18,10 +18,16 @@ namespace QuanLyKho.Controllers
         private QLKhoDBContext db = new QLKhoDBContext();
 
         // GET: SANPHAMs
-        public ActionResult Index(String sortOrder, String nhomSP, int? page)
+        public ActionResult Index(String sortOrder, String nhomSP, int? page, string searchString)
         {
             ViewBag.SortOrder = sortOrder;
             var sanPham = db.SANPHAMs.AsQueryable();
+
+            if (!string.IsNullOrEmpty(searchString))
+            {
+                sanPham = sanPham.Where(s => s.TenSP.Contains(searchString));
+                ViewBag.SearchString = searchString;
+            }
             if (!string.IsNullOrEmpty(nhomSP))
             {
                 sanPham = sanPham.Where(sp => sp.NHOMSANPHAM.TenNhomSP == nhomSP);
@@ -45,10 +51,6 @@ namespace QuanLyKho.Controllers
                     break;
             }
             return View(sanPham.ToList());
-           /* sanPham = sanPham.OrderBy(nv => nv.MaSP);
-            int pageSize = 10;
-            int pageNumber = (page ?? 1);
-            return View(sanPham.ToPagedList(pageNumber,pageSize)); */
         }
 
         // GET: SANPHAMs/Details/5
