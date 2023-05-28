@@ -32,8 +32,11 @@ namespace QuanLyKho.Controllers
                 Session["Taikhoan"] = ad;
                 Session["Chucvu"] = ad.CHUCVU.TenCV;
                 Session["anhNV"] = ad.ImgUrl;
+                Session["Ten"] = ad.TenNV;
+                Session["MaNv"] = ad.MaNV;
                 return RedirectToAction("Index", "NHANVIENs");
             }else{ 
+
                 ViewBag.Thongbao = "Tên đăng nhập hoặc mật khẩu không hợp lệ";
             }                   
             return View();
