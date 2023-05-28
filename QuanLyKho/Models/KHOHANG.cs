@@ -19,6 +19,10 @@ namespace QuanLyKho.Models
         public int MaKhoHang { get; set; }
 
         [Required]
+        [StringLength(200)]
+        public string LoaiKho { get; set; }
+
+        [Required]
         [StringLength(255)]
         public string TenKhohang { get; set; }
 
@@ -29,6 +33,8 @@ namespace QuanLyKho.Models
         [Required]
         [StringLength(20)]
         public string SDTKho { get; set; }
+
+        public int Succhua { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<VITRIKHO> VITRIKHOes { get; set; }

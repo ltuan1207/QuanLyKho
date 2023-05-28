@@ -39,6 +39,8 @@ namespace QuanLyKho.Models
         [StringLength(255)]
         public string HinhAnh { get; set; }
 
+        public double? KhoiLuong { get; set; }
+
         public int MaNCC { get; set; }
 
         public int MaNhomSP { get; set; }

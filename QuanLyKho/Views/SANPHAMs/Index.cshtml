@@ -1,5 +1,16 @@
-﻿
+﻿@using QuanLyKho.Models
 @model IEnumerable<QuanLyKho.Models.SANPHAM>
+
+@helper Truncate(string input, int lenght) { 
+    if(input.Length < lenght)
+    {
+        @input
+    }
+    else
+    {
+        @input.Substring(0, lenght) <text>...</text>
+    }
+} 
 
 @{
     ViewBag.Title = "Index";
@@ -51,6 +62,7 @@
                     <a href="#" id="sort-desc"><i class="fas fa-arrow-down"></i></a>
                 </span>
             </th>
+            <th>Khối lượng</th>
             <th>Hình ảnh</th>
             <th>Chưc năng</th>
         </tr>
@@ -69,7 +81,8 @@
                     @Html.DisplayFor(modelItem => item.TenSP)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Mota)
+                    @Truncate(item.Mota, 50)
+                    <a href="@Url.Action("Details","SANPHAMs",new { id = item.MaSP })">Xem thêm</a>
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.DonGia)
@@ -79,6 +92,9 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.SoLuongTon)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KhoiLuong)
                 </td>
                 <td>
                     <img src="~/images/@item.HinhAnh" style="width:50px" />

@@ -15,7 +15,7 @@ namespace QuanLyKho.Controllers
         private QLKhoDBContext db = new QLKhoDBContext();
 
         // GET: KHOHANGs
-        public ActionResult Index(String thanhPho)
+        public ActionResult Index(String thanhPho, String loaiKho)
         {
             var khohang = db.KHOHANGs.AsQueryable();
 
@@ -27,6 +27,10 @@ namespace QuanLyKho.Controllers
                 {
                     khohang = khohang.Where(ncc => ncc.DiaChi.ToLower().EndsWith(diaChiFilterEnd));
                 }
+            }
+            if (!string.IsNullOrEmpty(loaiKho))
+            {
+                khohang = khohang.Where(sp => sp.LoaiKho == loaiKho);
             }
 
             return View(khohang.ToList());

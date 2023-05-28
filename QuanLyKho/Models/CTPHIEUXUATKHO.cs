@@ -18,7 +18,7 @@ namespace QuanLyKho.Models
 
         public double DonGia { get; set; }
 
-        public int SoLuongNhap { get; set; }
+        public int SoLuongXuat { get; set; }
 
         public virtual PHIEUXUATKHO PHIEUXUATKHO { get; set; }
 

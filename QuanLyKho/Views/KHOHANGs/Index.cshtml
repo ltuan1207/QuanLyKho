@@ -27,6 +27,19 @@
                 </form>
             </th>
             <th>Số điện thoại</th>
+            <th>Loại kho</th>
+            <th>
+                <form method="get">
+                    <div class="form-group">
+                        <label>Sức chứa:</label>
+                        <select name="loaiKho" class="form-control" onchange="this.form.submit()" style="width:129px">
+                            <option value="">--loại kho--</option>
+                            <option value="Kho đông lạnh">Kho đông lạnh</option>
+                            <option value="Kho thường">Kho thường</option>
+                        </select>
+                    </div>
+                </form>
+            </th>
             <th>Chưc năng</th>
         </tr>
 
@@ -42,6 +55,12 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.SDTKho)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LoaiKho)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Succhua)
                 </td>
                 <td>
                     <a href="@Url.Action("Edit","KHOHANGs",new { id = item.MaKhoHang})" class="btn btn-sm btn-success">Sửa</a>

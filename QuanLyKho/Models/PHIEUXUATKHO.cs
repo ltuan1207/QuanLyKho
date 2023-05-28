@@ -18,6 +18,7 @@ namespace QuanLyKho.Models
         [Key]
         public int MaPXK { get; set; }
 
+        [Column(TypeName = "date")]
         public DateTime NgayXuat { get; set; }
 
         public double TongTien { get; set; }

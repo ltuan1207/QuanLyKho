@@ -160,12 +160,12 @@
     <Compile Include="Models\CTPHIEUXUATKHO.cs" />
     <Compile Include="Models\DONHANG.cs" />
     <Compile Include="Models\KHOHANG.cs" />
-    <Compile Include="Models\QLKhoDBContext.cs" />
     <Compile Include="Models\NHACUNGCAP.cs" />
     <Compile Include="Models\NHANVIEN.cs" />
     <Compile Include="Models\NHOMSANPHAM.cs" />
     <Compile Include="Models\PHIEUNHAPKHO.cs" />
     <Compile Include="Models\PHIEUXUATKHO.cs" />
+    <Compile Include="Models\QLKhoDBContext.cs" />
     <Compile Include="Models\SANPHAM.cs" />
     <Compile Include="Models\VITRIKHO.cs" />
     <Compile Include="Models\VITRISP.cs" />
@@ -230,13 +230,6 @@
     <Content Include="Scripts\jquery\jquery-3.3.1.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\Ql\QL.js" />
-    <Content Include="Web.config" />
-    <Content Include="Web.Debug.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
-    <Content Include="Web.Release.config">
-      <DependentUpon>Web.config</DependentUpon>
-    </Content>
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
@@ -317,6 +310,13 @@
     <Content Include="Views\CHITIETDONHANGs\Details.cshtml" />
     <Content Include="Views\CHITIETDONHANGs\Edit.cshtml" />
     <Content Include="Views\CHITIETDONHANGs\Index.cshtml" />
+    <Content Include="Web.Config" />
+    <None Include="Web.Debug.Config">
+      <DependentUpon>Web.Config</DependentUpon>
+    </None>
+    <None Include="Web.Release.Config">
+      <DependentUpon>Web.Config</DependentUpon>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
