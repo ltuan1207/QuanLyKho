@@ -21,32 +21,33 @@
             <th>Chức năng</th>
         </tr>
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td class="text-center"><input type="checkbox" class="checkbox" value="@item.MaPNK" /></td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.MaPNK)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NHACUNGCAP.TenNCC)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.NgayNhap)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TongTien)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TongSPNhapKho)
-                </td>
-                <td>
-                    <a href="@Url.Action("Edit","PHIEUNHAPKHOes",new { id = item.MaPNK})" class="btn btn-sm btn-success">Sửa</a>
-                    <a href="@Url.Action("Details","PHIEUNHAPKHOes",new { id = item.MaPNK })" class="btn btn-sm btn-info">Chi tiết</a>
-                    <a href="@Url.Action("Delete","PHIEUNHAPKHOes",new { id = item.MaPNK })" class="btn btn-sm btn-danger">Xóa</a>
-                </td>
-            </tr>
-        }
-
+        <tbody class="search">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="text-center"><input type="checkbox" class="checkbox" value="@item.MaPNK" /></td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.MaPNK)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NHACUNGCAP.TenNCC)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.NgayNhap)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TongTien)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.TongSPNhapKho)
+                    </td>
+                    <td>
+                        <a href="@Url.Action("Edit","PHIEUNHAPKHOes",new { id = item.MaPNK})" class="btn btn-sm btn-success">Sửa</a>
+                        <a href="@Url.Action("Details","PHIEUNHAPKHOes",new { id = item.MaPNK })" class="btn btn-sm btn-info">Chi tiết</a>
+                        <a href="@Url.Action("Delete","PHIEUNHAPKHOes",new { id = item.MaPNK })" class="btn btn-sm btn-danger">Xóa</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
     </table>
 </div>

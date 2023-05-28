@@ -20,29 +20,30 @@
             <th>chức năng</th>
         </tr>
 
-        @foreach (var item in Model)
-        {
-            <tr>
-                <td class="text-center"><input type="checkbox" class="checkbox" value="@item.MaCTPXK" /></td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PHIEUXUATKHO.MaPXK)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SANPHAM.TenSP)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.DonGia)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SoLuongNhap)
-                </td>
-                <td>
-                    <a href="@Url.Action("Edit","CTPHIEUXUATKHOes",new { id = item.MaCTPXK})" class="btn btn-sm btn-success">Sửa</a>
-                    <a href="@Url.Action("Details","CTPHIEUXUATKHOes",new { id = item.MaCTPXK })" class="btn btn-sm btn-info">Chi tiết</a>
-                    <a href="@Url.Action("Delete","CTPHIEUXUATKHOes",new { id = item.MaCTPXK })" class="btn btn-sm btn-danger">Xóa</a>
-                </td>
-            </tr>
-        }
-
+        <tbody class="search">
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td class="text-center"><input type="checkbox" class="checkbox" value="@item.MaCTPXK" /></td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PHIEUXUATKHO.MaPXK)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SANPHAM.TenSP)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DonGia)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SoLuongNhap)
+                    </td>
+                    <td>
+                        <a href="@Url.Action("Edit","CTPHIEUXUATKHOes",new { id = item.MaCTPXK})" class="btn btn-sm btn-success">Sửa</a>
+                        <a href="@Url.Action("Details","CTPHIEUXUATKHOes",new { id = item.MaCTPXK })" class="btn btn-sm btn-info">Chi tiết</a>
+                        <a href="@Url.Action("Delete","CTPHIEUXUATKHOes",new { id = item.MaCTPXK })" class="btn btn-sm btn-danger">Xóa</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
     </table>
 </div>
