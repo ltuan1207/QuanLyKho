@@ -22,7 +22,7 @@
                     <ul class="navbar-nav ml-auto navbar-right-top">
                         <li class="nav-item">
                             <div id="custom-search" class="top-search-bar">
-                                <input type="text" class="form-control" placeholder="Search.." fdprocessedid="cnbcuo">
+                                <input type="text" class="form-control" id="search" placeholder="Search.." fdprocessedid="cnbcuo">
                             </div>
                         </li>
                         <li class="nav-item dropdown nav-user">
@@ -138,7 +138,7 @@
     @*   <script>
         $(document).ready(function () {
             $('#sort-price-asc').on('click', function () {
-                var url = '@Url.Action("Index", "SanPham", new { sortOrder = "__sortOrder__", filterStock = ViewBag.FilterStock, filterPrice = ViewBag.FilterPrice })';
+                 var url = '@Url.Action("Index", "SanPham", new { sortOrder = "__sortOrder__", filterStock = ViewBag.FilterStock, filterPrice = ViewBag.FilterPrice })';
                 url = url.replace("__sortOrder__", "asc");
                 window.location.href = url;
             });

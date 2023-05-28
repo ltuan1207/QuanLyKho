@@ -23,11 +23,6 @@ namespace QuanLyKho.Controllers
             ViewBag.SortOrder = sortOrder;
             var sanPham = db.SANPHAMs.AsQueryable();
 
-            if (!string.IsNullOrEmpty(searchString))
-            {
-                sanPham = sanPham.Where(s => s.TenSP.Contains(searchString));
-                ViewBag.SearchString = searchString;
-            }
             if (!string.IsNullOrEmpty(nhomSP))
             {
                 sanPham = sanPham.Where(sp => sp.NHOMSANPHAM.TenNhomSP == nhomSP);

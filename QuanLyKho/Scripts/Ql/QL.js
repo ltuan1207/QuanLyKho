@@ -393,11 +393,26 @@ $('#deleteSelectedCTDH').click(function () {
         }
     }
 });
+
 /*chọn tất cả */
 $(document).ready(function () {
     // Xử lý sự kiện khi checkbox "check all" được chọn/deselect
     $('#checkAll').change(function () {
         var isChecked = $(this).is(':checked');
         $('.checkbox').prop('checked', isChecked);
+    });
+});
+
+$(document).ready(function () {
+    $('#search').keyup(function () {
+        var searchText = $(this).val().toLowerCase();
+        $('tbody.search tr').each(function () {
+            var currentRowText = $(this).text().toLowerCase();
+            if (currentRowText.indexOf(searchText) !== -1) {
+                $(this).show();
+            } else {
+                $(this).hide();
+            }
+        });
     });
 });
