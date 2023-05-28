@@ -261,7 +261,7 @@ $('#deleteSelectedPNK').click(function () {
     }
 });
 
-/*bắt sự kiện xóa các mục đã chọn bảng phieu nhap kho*/
+/*bắt sự kiện xóa các mục đã chọn bảng  ct phieu nhap kho*/
 $('#deleteSelectedCTPNK').click(function () {
     var selectedIds = $('.checkbox:checked').map(function () {
         return $(this).val();
@@ -288,6 +288,111 @@ $('#deleteSelectedCTPNK').click(function () {
     }
 });
 
+/*bắt sự kiện xóa các mục đã chọn bảng phieu xuat kho*/
+$('#deleteSelectedPXK').click(function () {
+    var selectedIds = $('.checkbox:checked').map(function () {
+        return $(this).val();
+    }).get();
+
+    if (selectedIds.length === 0) {
+        alert('Vui lòng chọn ít nhất một mục để xóa.');
+    } else {
+        var confirmed = confirm('Bạn có chắc muốn xóa các mục đã chọn?');
+
+        if (confirmed) {
+            $.ajax({
+                url: '/PHIEUXUATKHOes/DeleteSelected',
+                type: 'POST',
+                data: { selectedIds: selectedIds },
+                success: function () {
+                    location.reload();
+                },
+                error: function () {
+                    alert('Đã xảy ra lỗi khi xóa các mục đã chọn.');
+                }
+            });
+        }
+    }
+});
+
+/*bắt sự kiện xóa các mục đã chọn ct bảng phieu xuat kho*/
+$('#deleteSelectedCTPXK').click(function () {
+    var selectedIds = $('.checkbox:checked').map(function () {
+        return $(this).val();
+    }).get();
+
+    if (selectedIds.length === 0) {
+        alert('Vui lòng chọn ít nhất một mục để xóa.');
+    } else {
+        var confirmed = confirm('Bạn có chắc muốn xóa các mục đã chọn?');
+
+        if (confirmed) {
+            $.ajax({
+                url: '/CTPHIEUXUATKHOes/DeleteSelected',
+                type: 'POST',
+                data: { selectedIds: selectedIds },
+                success: function () {
+                    location.reload();
+                },
+                error: function () {
+                    alert('Đã xảy ra lỗi khi xóa các mục đã chọn.');
+                }
+            });
+        }
+    }
+});
+/*bắt sự kiện xóa các mục đã chọn bảng don hang*/
+$('#deleteSelectedDH').click(function () {
+    var selectedIds = $('.checkbox:checked').map(function () {
+        return $(this).val();
+    }).get();
+
+    if (selectedIds.length === 0) {
+        alert('Vui lòng chọn ít nhất một mục để xóa.');
+    } else {
+        var confirmed = confirm('Bạn có chắc muốn xóa các mục đã chọn?');
+
+        if (confirmed) {
+            $.ajax({
+                url: '/DONHANGs/DeleteSelected',
+                type: 'POST',
+                data: { selectedIds: selectedIds },
+                success: function () {
+                    location.reload();
+                },
+                error: function () {
+                    alert('Đã xảy ra lỗi khi xóa các mục đã chọn.');
+                }
+            });
+        }
+    }
+});
+/*bắt sự kiện xóa các mục đã chọn bảng ct don hang*/
+$('#deleteSelectedCTDH').click(function () {
+    var selectedIds = $('.checkbox:checked').map(function () {
+        return $(this).val();
+    }).get();
+
+    if (selectedIds.length === 0) {
+        alert('Vui lòng chọn ít nhất một mục để xóa.');
+    } else {
+        var confirmed = confirm('Bạn có chắc muốn xóa các mục đã chọn?');
+
+        if (confirmed) {
+            $.ajax({
+                url: '/CHITIETDONHANGs/DeleteSelected',
+                type: 'POST',
+                data: { selectedIds: selectedIds },
+                success: function () {
+                    location.reload();
+                },
+                error: function () {
+                    alert('Đã xảy ra lỗi khi xóa các mục đã chọn.');
+                }
+            });
+        }
+    }
+});
 /*chọn tất cả */
 $(document).ready(function () {
     // Xử lý sự kiện khi checkbox "check all" được chọn/deselect

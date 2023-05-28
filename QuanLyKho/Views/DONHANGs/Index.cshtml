@@ -5,54 +5,53 @@
     Layout = "~/Views/Shared/_LayoutIndex.cshtml";
 }
 
-<h2>Index</h2>
+<h2>Index don hang</h2>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.KhachHang)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.DiaChi)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.SDT)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.NgayLapDonHang)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.GiaTriDH)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.KhachHang)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DiaChi)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.SDT)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.NgayLapDonHang)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.GiaTriDH)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.MaDH }) |
-            @Html.ActionLink("Details", "Details", new { id=item.MaDH }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.MaDH })
-        </td>
-    </tr>
-}
+<a href="@Url.Action("Create","DONHANGs")" class="btn btn-sm btn-success" style="padding:8px">Thêm</a>
+<button id="deleteSelectedDH" class="btn btn-danger">Xóa các mục đã chọn</button>
+<div class=" card-body">
+    <table class="table table-bordered">
+        <tr>
+            <th><input type="checkbox" id="checkAll" /></th>
+            <th>Mã đơn hàng</th>
+            <th>Khách hàng</th>
+            <th>Địa chỉ</th>
+            <th>SDT</th>
+            <th>Ngày lập</th>
+            <th>Thành tiền</th>
+            <th>Chức năng</th>
+        </tr>
 
-</table>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td class="text-center"><input type="checkbox" class="checkbox" value="@item.MaDH" /></td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaDH)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.KhachHang)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DiaChi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SDT)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NgayLapDonHang)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.GiaTriDH)
+                </td>
+                <td>
+                    <a href="@Url.Action("Edit","DONHANGs",new { id = item.MaDH})" class="btn btn-sm btn-success">Sửa</a>
+                    <a href="@Url.Action("Details","DONHANGs",new { id = item.MaDH })" class="btn btn-sm btn-info">Chi tiết</a>
+                    <a href="@Url.Action("Delete","DONHANGs",new { id = item.MaDH })" class="btn btn-sm btn-danger">Xóa</a>
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
