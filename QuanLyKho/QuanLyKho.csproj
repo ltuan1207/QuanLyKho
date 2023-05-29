@@ -139,6 +139,7 @@
     <Compile Include="Controllers\CHUCVUsController.cs" />
     <Compile Include="Controllers\CTPHIEUNHAPKHOesController.cs" />
     <Compile Include="Controllers\CTPHIEUXUATKHOesController.cs" />
+    <Compile Include="Controllers\DasboardController.cs" />
     <Compile Include="Controllers\DONHANGsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\KHOHANGsController.cs" />
@@ -312,6 +313,7 @@
     <Content Include="Views\CHITIETDONHANGs\Edit.cshtml" />
     <Content Include="Views\CHITIETDONHANGs\Index.cshtml" />
     <Content Include="Web.Config" />
+    <Content Include="Views\Dasboard\Index.cshtml" />
     <None Include="Web.Debug.Config">
       <DependentUpon>Web.Config</DependentUpon>
     </None>

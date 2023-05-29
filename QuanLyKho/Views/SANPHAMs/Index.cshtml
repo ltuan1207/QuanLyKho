@@ -44,8 +44,10 @@
             <th>
                 <span>
                     Đơn giá
-                    <a href="@Url.Action("Index", new { sortOrder = "asc-price" })"><i class="fas fa-arrow-up"></i></a>
-                    <a href="@Url.Action("Index", new { sortOrder = "desc-price" })"><i class="fas fa-arrow-down"></i></a>
+                    <span style="display:flex">
+                        <a href="@Url.Action("Index", new { sortOrder = "asc-price" })"><i class="fas fa-arrow-up"></i></a>
+                        <a href="@Url.Action("Index", new { sortOrder = "desc-price" })"><i class="fas fa-arrow-down"></i></a>
+                    </span>
                 </span>
             </th>
             <th>Đơn vị tính</th>
