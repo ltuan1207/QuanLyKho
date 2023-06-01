@@ -7,8 +7,8 @@
 
 <h2>Index vi tri kho</h2>
 
-<a href="@Url.Action("Create", "VITRIKHOes")" class="btn btn-sm btn-success" style="padding:8px">Thêm</a>
-<button id="deleteSelectedVTK" class="btn btn-danger">Xóa các mục đã chọn</button>
+<a href="@Url.Action("Create", "VITRIKHOes")" class="btn btn-outline-success" style="padding:6px 14px"><i class="fas fa-plus"></i></a>
+<button id="deleteSelectedVTK" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i></button>
 <div class=" card-body">
     <table class="table table-bordered table-striped">
         <thead class="thead-dark">
@@ -35,10 +35,10 @@
                     <td>
                         @Html.DisplayFor(modelItem => item.MoTa)
                     </td>
-                    <td class="d-xl-flex">
-                        <a href="@Url.Action("Edit","VITRIKHOes",new { id = item.MaVTK})" class="btn btn-sm btn-success">Sửa</a>  |
-                        <a href="@Url.Action("Details","VITRIKHOes",new { id = item.MaVTK })" class="btn btn-sm btn-info">Chi tiết</a>  |
-                        <a href="@Url.Action("Delete","VITRIKHOes",new { id = item.MaVTK})" class="btn btn-sm btn-danger">Xóa</a>
+                    <td style="display:flex; border-bottom:0">
+                        <a href="@Url.Action("Edit","VITRIKHOes",new { id = item.MaVTK})" class="btn btn-outline-dark">Sửa</a>  
+                        <a href="@Url.Action("Details","VITRIKHOes",new { id = item.MaVTK })" class="btn btn-outline-info">Chi tiết</a>  
+                        <a href="@Url.Action("Delete","VITRIKHOes",new { id = item.MaVTK})" class="btn btn-outline-danger">Xóa</a>
                     </td>
                 </tr>
             }

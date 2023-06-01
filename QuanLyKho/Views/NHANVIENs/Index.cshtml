@@ -10,8 +10,8 @@
 <h2>Index NhanVien</h2>
 
 
-<a href="@Url.Action("Create","NHANVIENs")" class="btn btn-sm btn-success" style="padding:8px">Thêm</a>
-<button id="deleteSelectedNV" class="btn btn-danger">Xóa các mục đã chọn</button>
+<a href="@Url.Action("Create","NHANVIENs")" class="btn btn-outline-success "><i class="fas fa-user-plus"></i></a>
+<button id="deleteSelectedNV" class="btn btn-outline-danger"><i class="fas fa-trash-alt"></i></button>
 <div class="card-body">
     <table class="table table-bordered table-striped">
         <thead class="thead-dark">
@@ -58,9 +58,9 @@
                     @Html.DisplayFor(modelItem => item.ImgUrl)
                 </td>
                 <td>
-                    <a href="@Url.Action("Edit","NHANVIENs",new { id = item.MaNV})" class="btn btn-sm btn-success">Sửa</a>
-                    <a href="@Url.Action("Details","NHANVIENs",new { id = item.MaNV })" class="btn btn-sm btn-info">Chi tiết</a>
-                    <a href="@Url.Action("Delete","NHANVIENs",new { id = item.MaNV })" class="btn btn-sm btn-danger">Xóa</a>
+                    <a href="@Url.Action("Edit","NHANVIENs",new { id = item.MaNV})" class="btn btn-outline-dark">Sửa</a>
+                    <a href="@Url.Action("Details","NHANVIENs",new { id = item.MaNV })" class="btn btn-outline-info">Chi tiết</a>
+                    <a href="@Url.Action("Delete","NHANVIENs",new { id = item.MaNV })" class="btn btn-outline-danger">Xóa</a>
                 </td>
             </tr>
         }
