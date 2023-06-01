@@ -39,6 +39,7 @@ namespace QuanLyKho.Controllers
         // GET: CTPHIEUXUATKHOes/Create
         public ActionResult Create()
         {
+            ViewBag.MaVTK = new SelectList(db.VITRIKHOes, "MaVTK", "TenVTK");
             ViewBag.MaPXK = new SelectList(db.PHIEUXUATKHOes, "MaPXK", "MaPXK");
             ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP");
             return View();
@@ -49,7 +50,7 @@ namespace QuanLyKho.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaCTPXK,MaSP,MaPXK,DonGia,SoLuongNhap")] CTPHIEUXUATKHO cTPHIEUXUATKHO)
+        public ActionResult Create([Bind(Include = "MaCTPXK,MaSP,MaPXK,MaVTK,DonGia,DonviTinh,Khoiluong,SoLuongXuat")] CTPHIEUXUATKHO cTPHIEUXUATKHO)
         {
             if (ModelState.IsValid)
             {
@@ -57,7 +58,7 @@ namespace QuanLyKho.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            ViewBag.MaVTK = new SelectList(db.VITRIKHOes, "MaVTK", "TenVTK", cTPHIEUXUATKHO.MaVTK);
             ViewBag.MaPXK = new SelectList(db.PHIEUXUATKHOes, "MaPXK", "MaPXK", cTPHIEUXUATKHO.MaPXK);
             ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP", cTPHIEUXUATKHO.MaSP);
             return View(cTPHIEUXUATKHO);
@@ -75,6 +76,8 @@ namespace QuanLyKho.Controllers
             {
                 return HttpNotFound();
             }
+
+            ViewBag.MaVTK = new SelectList(db.VITRIKHOes, "MaVTK", "TenVTK", cTPHIEUXUATKHO.MaVTK);
             ViewBag.MaPXK = new SelectList(db.PHIEUXUATKHOes, "MaPXK", "MaPXK", cTPHIEUXUATKHO.MaPXK);
             ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP", cTPHIEUXUATKHO.MaSP);
             return View(cTPHIEUXUATKHO);
@@ -85,7 +88,7 @@ namespace QuanLyKho.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaCTPXK,MaSP,MaPXK,DonGia,SoLuongNhap")] CTPHIEUXUATKHO cTPHIEUXUATKHO)
+        public ActionResult Edit([Bind(Include = "MaCTPXK,MaSP,MaPXK,MaVTK,DonGia,DonviTinh,Khoiluong,SoLuongXuat")] CTPHIEUXUATKHO cTPHIEUXUATKHO)
         {
             if (ModelState.IsValid)
             {
@@ -93,6 +96,7 @@ namespace QuanLyKho.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            ViewBag.MaVTK = new SelectList(db.VITRIKHOes, "MaVTK", "TenVTK", cTPHIEUXUATKHO.MaVTK); 
             ViewBag.MaPXK = new SelectList(db.PHIEUXUATKHOes, "MaPXK", "MaPXK", cTPHIEUXUATKHO.MaPXK);
             ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP", cTPHIEUXUATKHO.MaSP);
             return View(cTPHIEUXUATKHO);

@@ -17,8 +17,7 @@ namespace QuanLyKho.Controllers
         // GET: PHIEUNHAPKHOes
         public ActionResult Index()
         {
-            var pHIEUNHAPKHOes = db.PHIEUNHAPKHOes.Include(p => p.NHACUNGCAP);
-            return View(pHIEUNHAPKHOes.ToList());
+            return View(db.PHIEUNHAPKHOes.ToList());
         }
 
         // GET: PHIEUNHAPKHOes/Details/5
@@ -39,7 +38,6 @@ namespace QuanLyKho.Controllers
         // GET: PHIEUNHAPKHOes/Create
         public ActionResult Create()
         {
-            ViewBag.MaNCC = new SelectList(db.NHACUNGCAPs, "MaNCC", "TenNCC");
             return View();
         }
 
@@ -48,7 +46,7 @@ namespace QuanLyKho.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaPNK,NgayNhap,TongTien,TongSPNhapKho,MaNCC")] PHIEUNHAPKHO pHIEUNHAPKHO)
+        public ActionResult Create([Bind(Include = "MaPNK,NgayNhap,TongGTNhap")] PHIEUNHAPKHO pHIEUNHAPKHO)
         {
             if (ModelState.IsValid)
             {
@@ -56,8 +54,6 @@ namespace QuanLyKho.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
-            ViewBag.MaNCC = new SelectList(db.NHACUNGCAPs, "MaNCC", "TenNCC", pHIEUNHAPKHO.MaNCC);
             return View(pHIEUNHAPKHO);
         }
 
@@ -73,7 +69,6 @@ namespace QuanLyKho.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.MaNCC = new SelectList(db.NHACUNGCAPs, "MaNCC", "TenNCC", pHIEUNHAPKHO.MaNCC);
             return View(pHIEUNHAPKHO);
         }
 
@@ -82,7 +77,7 @@ namespace QuanLyKho.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaPNK,NgayNhap,TongTien,TongSPNhapKho,MaNCC")] PHIEUNHAPKHO pHIEUNHAPKHO)
+        public ActionResult Edit([Bind(Include = "MaPNK,NgayNhap,,TongGTNhap")] PHIEUNHAPKHO pHIEUNHAPKHO)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +85,6 @@ namespace QuanLyKho.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.MaNCC = new SelectList(db.NHACUNGCAPs, "MaNCC", "TenNCC", pHIEUNHAPKHO.MaNCC);
             return View(pHIEUNHAPKHO);
         }
 

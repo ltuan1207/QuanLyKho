@@ -1,4 +1,4 @@
-$(document).ready(function () {
+﻿$(document).ready(function () {
     $('#sort-asc').on('click', function () {
         var url = '@Url.Action("Index", "SANPHAMs", new { sortOrder = "asc" })';
         window.location.href = url;

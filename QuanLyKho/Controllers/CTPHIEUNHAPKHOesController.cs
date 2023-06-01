@@ -39,6 +39,7 @@ namespace QuanLyKho.Controllers
         // GET: CTPHIEUNHAPKHOes/Create
         public ActionResult Create()
         {
+            ViewBag.MaVTK = new SelectList(db.VITRIKHOes, "MaVTK", "TenVTK");
             ViewBag.MaPNK = new SelectList(db.PHIEUNHAPKHOes, "MaPNK", "MaPNK");
             ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP");
             return View();
@@ -49,15 +50,16 @@ namespace QuanLyKho.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaCTPNK,MaSP,MaPNK,DonGia,SoLuongNhap")] CTPHIEUNHAPKHO cTPHIEUNHAPKHO)
+        public ActionResult Create([Bind(Include = "MaCTPNK,MaSP,MaPNK,MaVTK,DonGiaN,DonviTinh,Khoiluong,SoLuongNhap")] CTPHIEUNHAPKHO cTPHIEUNHAPKHO)
         {
             if (ModelState.IsValid)
             {
-                db.CTPHIEUNHAPKHOes.Add(cTPHIEUNHAPKHO);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                var phieuNhapKho = db.PHIEUNHAPKHOes.Find(cTPHIEUNHAPKHO.MaPNK);
+                    db.CTPHIEUNHAPKHOes.Add(cTPHIEUNHAPKHO);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
             }
-
+            ViewBag.MaVTK = new SelectList(db.VITRIKHOes, "MaVTK", "TenVTK", cTPHIEUNHAPKHO.MaVTK);
             ViewBag.MaPNK = new SelectList(db.PHIEUNHAPKHOes, "MaPNK", "MaPNK", cTPHIEUNHAPKHO.MaPNK);
             ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP", cTPHIEUNHAPKHO.MaSP);
             return View(cTPHIEUNHAPKHO);
@@ -75,6 +77,8 @@ namespace QuanLyKho.Controllers
             {
                 return HttpNotFound();
             }
+
+            ViewBag.MaVTK = new SelectList(db.VITRIKHOes, "MaVTK", "TenVTK", cTPHIEUNHAPKHO.MaVTK);
             ViewBag.MaPNK = new SelectList(db.PHIEUNHAPKHOes, "MaPNK", "MaPNK", cTPHIEUNHAPKHO.MaPNK);
             ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP", cTPHIEUNHAPKHO.MaSP);
             return View(cTPHIEUNHAPKHO);
@@ -93,6 +97,8 @@ namespace QuanLyKho.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+
+            ViewBag.MaVTK = new SelectList(db.VITRIKHOes, "MaVTK", "TenVTK", cTPHIEUNHAPKHO.MaVTK);
             ViewBag.MaPNK = new SelectList(db.PHIEUNHAPKHOes, "MaPNK", "MaPNK", cTPHIEUNHAPKHO.MaPNK);
             ViewBag.MaSP = new SelectList(db.SANPHAMs, "MaSP", "TenSP", cTPHIEUNHAPKHO.MaSP);
             return View(cTPHIEUNHAPKHO);

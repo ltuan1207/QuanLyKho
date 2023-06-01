@@ -10,13 +10,15 @@
 <a href="@Url.Action("Create","CHUCVUs")" class="btn btn-sm btn-success" style="padding:8px">Thêm</a>
 <button id="deleteSelectedCV" class="btn btn-danger">Xóa các mục đã chọn</button>
 <div class="card-body">
-    <table class="table table-bordered">
-        <tr>
-            <th><input type="checkbox" id="checkAll" /></th>
-            <th>Chức vụ</th>
-            <th>Mô tả</th>
-            <th>Chưc năng</th>
-        </tr>
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th><input type="checkbox" id="checkAll" /></th>
+                <th>Chức vụ</th>
+                <th>Mô tả</th>
+                <th>Chưc năng</th>
+            </tr>
+        </thead>
 
         @foreach (var item in Model)
         {

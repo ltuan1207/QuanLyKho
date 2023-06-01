@@ -12,6 +12,8 @@ namespace QuanLyKho.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public VITRIKHO()
         {
+            CTPHIEUNHAPKHOes = new HashSet<CTPHIEUNHAPKHO>();
+            CTPHIEUXUATKHOes = new HashSet<CTPHIEUXUATKHO>();
             VITRISPs = new HashSet<VITRISP>();
         }
 
@@ -26,6 +28,12 @@ namespace QuanLyKho.Models
         public string MoTa { get; set; }
 
         public int MaKhoHang { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CTPHIEUNHAPKHO> CTPHIEUNHAPKHOes { get; set; }
+
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
+        public virtual ICollection<CTPHIEUXUATKHO> CTPHIEUXUATKHOes { get; set; }
 
         public virtual KHOHANG KHOHANG { get; set; }
 

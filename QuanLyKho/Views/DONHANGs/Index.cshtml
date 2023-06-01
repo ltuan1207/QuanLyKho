@@ -11,17 +11,19 @@
 <a href="@Url.Action("Create","DONHANGs")" class="btn btn-sm btn-success" style="padding:8px">Thêm</a>
 <button id="deleteSelectedDH" class="btn btn-danger">Xóa các mục đã chọn</button>
 <div class=" card-body">
-    <table class="table table-bordered">
-        <tr>
-            <th><input type="checkbox" id="checkAll" /></th>
-            <th>Mã đơn hàng</th>
-            <th>Khách hàng</th>
-            <th>Địa chỉ</th>
-            <th>SDT</th>
-            <th>Ngày lập</th>
-            <th>Thành tiền</th>
-            <th>Chức năng</th>
-        </tr>
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th><input type="checkbox" id="checkAll" /></th>
+                <th>Mã đơn hàng</th>
+                <th>Khách hàng</th>
+                <th>Địa chỉ</th>
+                <th>SDT</th>
+                <th>Ngày lập</th>
+                <th>Thành tiền</th>
+                <th>Chức năng</th>
+            </tr>
+        </thead>
 
         <tbody class="search">
             @foreach (var item in Model)

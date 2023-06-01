@@ -46,7 +46,7 @@ namespace QuanLyKho.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaPXK,NgayXuat,TongTien,TongSPXuatKho")] PHIEUXUATKHO pHIEUXUATKHO)
+        public ActionResult Create([Bind(Include = "MaPXK,NgayXuat,TongGTXuat")] PHIEUXUATKHO pHIEUXUATKHO)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +78,7 @@ namespace QuanLyKho.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaPXK,NgayXuat,TongTien,TongSPXuatKho")] PHIEUXUATKHO pHIEUXUATKHO)
+        public ActionResult Edit([Bind(Include = "MaPXK,NgayXuat,TongGTXuat")] PHIEUXUATKHO pHIEUXUATKHO)
         {
             if (ModelState.IsValid)
             {

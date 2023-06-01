@@ -29,11 +29,27 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.DonGia)
+            @Html.DisplayNameFor(model => model.VITRIKHO.TenVTK)
         </dt>
 
         <dd>
-            @Html.DisplayFor(model => model.DonGia)
+            @Html.DisplayFor(model => model.VITRIKHO.TenVTK)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DoviTinh)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DoviTinh)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Khoiluong)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Khoiluong)
         </dd>
 
         <dt>
@@ -44,14 +60,22 @@
             @Html.DisplayFor(model => model.SoLuongNhap)
         </dd>
 
+        <dt>
+            @Html.DisplayNameFor(model => model.DonGiaN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DonGiaN)
+        </dd>
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Xóa" class="btn btn-sm btn-danger" style="margin-right:8px; padding:8px" />
-            <a href="@Url.Action("Index","CTPHIEUNHAPKHOes")" class="btn btn-sm btn-success" style="padding: 8px">Trở về <i class="fas fa-arrow-circle-left"></i></a>
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
         </div>
     }
 </div>

@@ -10,15 +10,20 @@
 <a href="@Url.Action("Create","CTPHIEUXUATKHOes")" class="btn btn-sm btn-success" style="padding: 12px">Thêm</a>
 <button id="deleteSelectedCTPXK" class="btn btn-danger" style="position:fixed">Xóa các mục đã chọn</button>
 <div class="card-body">
-    <table class="table table-bordered">
-        <tr>
-            <th><input type="checkbox" id="checkAll" /></th>
-            <th>Mã phiếu xuất kho</th>
-            <th>Tên sản phẩm</th>
-            <th>Đơn giá</th>
-            <th>Số lượng xuất</th>
-            <th>chức năng</th>
-        </tr>
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th><input type="checkbox" id="checkAll" /></th>
+                <th>Mã phiếu xuất kho</th>
+                <th>Tên sản phẩm</th>
+                <th>Vị trí</th>
+                <th>Đơn vị tính</th>
+                <th>Khối lượng</th>
+                <th>Đơn giá</th>
+                <th>Số lượng xuất</th>
+                <th>chức năng</th>
+            </tr>
+        </thead>
 
         <tbody class="search">
             @foreach (var item in Model)
@@ -32,10 +37,19 @@
                         @Html.DisplayFor(modelItem => item.SANPHAM.TenSP)
                     </td>
                     <td>
+                        @Html.DisplayFor(modelItem => item.VITRIKHO.MaVTK)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.DoviTinh)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Khoiluong)
+                    </td>
+                    <td>
                         @Html.DisplayFor(modelItem => item.DonGia)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.SoLuongNhap)
+                        @Html.DisplayFor(modelItem => item.SoLuongXuat)
                     </td>
                     <td>
                         <a href="@Url.Action("Edit","CTPHIEUXUATKHOes",new { id = item.MaCTPXK})" class="btn btn-sm btn-success">Sửa</a>

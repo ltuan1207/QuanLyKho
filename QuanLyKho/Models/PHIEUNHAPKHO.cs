@@ -21,15 +21,9 @@ namespace QuanLyKho.Models
         [Column(TypeName = "date")]
         public DateTime NgayNhap { get; set; }
 
-        public double TongTien { get; set; }
-
-        public int TongSPNhapKho { get; set; }
-
-        public int MaNCC { get; set; }
+        public int TongGTNhap { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CTPHIEUNHAPKHO> CTPHIEUNHAPKHOes { get; set; }
-
-        public virtual NHACUNGCAP NHACUNGCAP { get; set; }
     }
 }

@@ -12,7 +12,6 @@ namespace QuanLyKho.Models
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
         public NHACUNGCAP()
         {
-            PHIEUNHAPKHOes = new HashSet<PHIEUNHAPKHO>();
             SANPHAMs = new HashSet<SANPHAM>();
         }
 
@@ -30,9 +29,6 @@ namespace QuanLyKho.Models
         [Required]
         [StringLength(20)]
         public string SDTNCC { get; set; }
-
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<PHIEUNHAPKHO> PHIEUNHAPKHOes { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<SANPHAM> SANPHAMs { get; set; }

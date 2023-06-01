@@ -10,18 +10,18 @@
 <a href="@Url.Action("Create","PHIEUNHAPKHOes")" class="btn btn-sm btn-success" style="padding:8px">Thêm</a>
 <button id="deleteSelectedPNK" class="btn btn-danger">Xóa các mục đã chọn</button>
 <div class="card-body">
-    <table class="table table-bordered">
-        <tr>
-            <th><input type="checkbox" id="checkAll" /></th>
-            <th>Mã Phiếu</th>
-            <th>Nhà cung cấp:</th>
-            <th>Ngày nhập:</th>
-            <th>Tổng tiền</th>
-            <th>Tổng số lượng nhập</th>
-            <th>Chức năng</th>
-        </tr>
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+            <tr>
+                <th><input type="checkbox" id="checkAll" /></th>
+                <th>Mã Phiếu</th>
+                <th>Ngày nhập:</th>
+                <th>Tổng tiền</th>
+                <th>Chức năng</th>
+            </tr>
+        </thead>
 
-        <tbody class="search">
+        <tbody class="search" style="font-size:13px">
             @foreach (var item in Model)
             {
                 <tr>
@@ -30,16 +30,10 @@
                         @Html.DisplayFor(modelItem => item.MaPNK)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.NHACUNGCAP.TenNCC)
-                    </td>
-                    <td>
                         @Html.DisplayFor(modelItem => item.NgayNhap)
                     </td>
                     <td>
-                        @Html.DisplayFor(modelItem => item.TongTien)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.TongSPNhapKho)
+                        @Html.DisplayFor(modelItem => item.TongGTNhap)
                     </td>
                     <td>
                         <a href="@Url.Action("Edit","PHIEUNHAPKHOes",new { id = item.MaPNK})" class="btn btn-sm btn-success">Sửa</a>

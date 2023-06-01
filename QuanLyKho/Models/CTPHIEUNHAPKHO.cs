@@ -16,11 +16,20 @@ namespace QuanLyKho.Models
 
         public int MaPNK { get; set; }
 
-        public double DonGia { get; set; }
+        public double DonGiaN { get; set; }
 
         public int SoLuongNhap { get; set; }
 
+        [StringLength(20)]
+        public string DoviTinh { get; set; }
+
+        public double? Khoiluong { get; set; }
+
+        public int MaVTK { get; set; }
+
         public virtual PHIEUNHAPKHO PHIEUNHAPKHO { get; set; }
+
+        public virtual VITRIKHO VITRIKHO { get; set; }
 
         public virtual SANPHAM SANPHAM { get; set; }
     }

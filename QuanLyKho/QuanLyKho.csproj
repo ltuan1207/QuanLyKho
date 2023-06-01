@@ -168,6 +168,7 @@
     <Compile Include="Models\PHIEUXUATKHO.cs" />
     <Compile Include="Models\QLKhoDBContext.cs" />
     <Compile Include="Models\SANPHAM.cs" />
+    <Compile Include="Models\sysdiagram.cs" />
     <Compile Include="Models\VITRIKHO.cs" />
     <Compile Include="Models\VITRISP.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -231,7 +232,7 @@
     <Content Include="Scripts\jquery\jquery-3.3.1.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\Ql\main1.js" />
-    <Content Include="Scripts\Ql\QL.js" />
+    <Content Include="Scripts\Ql\Ql.js" />
     <Content Include="Views\Web.config" />
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
