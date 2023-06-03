@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Data.SqlClient;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -76,12 +77,25 @@ namespace QuanLyKho.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaSP,TenSP,Mota,DonGia,DonViTinh,SoLuongTon,NgayNhap,HinhAnh,MaNCC,MaNhomSP")] SANPHAM sANPHAM)
+        public ActionResult Create([Bind(Include = "MaSP,TenSP,Mota,DonGia,DonViTinh,SoLuongTon,NgayNhap,HinhAnh,MaNCC,MaNhomSP")] SANPHAM sANPHAM, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
+                if (file != null && file.ContentLength > 0)
+                {
+                    var fileName = Path.GetFileName(file.FileName);
+                    sANPHAM.HinhAnh = fileName;
+                }
+
                 db.SANPHAMs.Add(sANPHAM);
                 db.SaveChanges();
+
+                if (file != null && file.ContentLength > 0)
+                {
+                    var path = Path.Combine(Server.MapPath("~/images"), sANPHAM.HinhAnh);
+                    file.SaveAs(path);
+                }
+
                 return RedirectToAction("Index");
             }
 
@@ -112,10 +126,19 @@ namespace QuanLyKho.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaSP,TenSP,Mota,DonGia,DonViTinh,SoLuongTon,NgayNhap,HinhAnh,MaNCC,MaNhomSP")] SANPHAM sANPHAM)
+        public ActionResult Edit([Bind(Include = "MaSP,TenSP,Mota,DonGia,DonViTinh,SoLuongTon,NgayNhap,HinhAnh,MaNCC,MaNhomSP")] SANPHAM sANPHAM, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
+                if (file != null && file.ContentLength > 0)
+                {
+                    var fileName = Path.GetFileName(file.FileName);
+                    sANPHAM.HinhAnh= fileName;
+
+                    var path = Path.Combine(Server.MapPath("~/images/"), fileName);
+                    file.SaveAs(path);
+                }
+
                 db.Entry(sANPHAM).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

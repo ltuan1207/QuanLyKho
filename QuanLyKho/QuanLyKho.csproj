@@ -187,6 +187,7 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="images\2-20.jpg" />
     <Content Include="images\anh.jpg" />
     <Content Include="images\aokhoacnam.jpg" />
     <Content Include="images\aokhoacnu.jpg" />

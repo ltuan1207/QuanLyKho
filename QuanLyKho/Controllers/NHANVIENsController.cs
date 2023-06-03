@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
@@ -67,12 +68,25 @@ namespace QuanLyKho.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaNV,TenNV,Email,MatKhau,ImgUrl,MaCV")] NHANVIEN nHANVIEN)
+        public ActionResult Create([Bind(Include = "MaNV,TenNV,Email,MatKhau,ImgUrl,MaCV")] NHANVIEN nHANVIEN, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
+                if (file != null && file.ContentLength > 0)
+                {
+                    var fileName = Path.GetFileName(file.FileName);
+                    nHANVIEN.ImgUrl = fileName;
+                }
+
                 db.NHANVIENs.Add(nHANVIEN);
                 db.SaveChanges();
+
+                if (file != null && file.ContentLength > 0)
+                {
+                    var path = Path.Combine(Server.MapPath("~/images"), nHANVIEN.ImgUrl);
+                    file.SaveAs(path);
+                }
+
                 return RedirectToAction("Index");
             }
 
@@ -101,10 +115,19 @@ namespace QuanLyKho.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaNV,TenNV,Email,MatKhau,ImgUrl,MaCV")] NHANVIEN nHANVIEN)
+        public ActionResult Edit([Bind(Include = "MaNV,TenNV,Email,MatKhau,ImgUrl,MaCV")] NHANVIEN nHANVIEN, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
+                if (file != null && file.ContentLength > 0)
+                {
+                    var fileName = Path.GetFileName(file.FileName);
+                    nHANVIEN.ImgUrl = fileName;
+
+                    var path = Path.Combine(Server.MapPath("~/images/"), fileName);
+                    file.SaveAs(path);
+                }
+
                 db.Entry(nHANVIEN).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

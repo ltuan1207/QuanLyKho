@@ -55,7 +55,7 @@
                     @Html.DisplayFor(modelItem => item.MatKhau)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.ImgUrl)
+                    <img src="~/images/@item.ImgUrl" style="width:50px" />
                 </td>
                 <td>
                     <a href="@Url.Action("Edit","NHANVIENs",new { id = item.MaNV})" class="btn btn-outline-dark">Sửa</a>

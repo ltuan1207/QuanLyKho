@@ -73,12 +73,14 @@
         </dt>
 
         <dd>
+            <img src="@Url.Content("~/images/" + Model.HinhAnh)" width="100" />
             @Html.DisplayFor(model => model.HinhAnh)
         </dd>
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
@@ -86,4 +88,6 @@
             <a href="@Url.Action("Index","SANPHAMs")" class="btn btn-outline-success">Trở về <i class="fas fa-arrow-circle-left"></i></a>
         </div>
     }
+
 </div>
+
