@@ -34,6 +34,10 @@ h5 {
     line-height: 26px;
 }
 
+h1 {
+    font-size: 34px;
+}
+
 button {}
 
 /*===========================================================
@@ -420,4 +424,114 @@ Left Navigation Sidebar
 
 .badge-success {
     background-color: #21ae41;
+}
+
+/*----------------------- 
+Container / Wrapper
+-------------------------*/
+.dashboard-wrapper {
+    position: relative;
+    left: 0;
+}
+
+.dashboard-content {
+    padding: 30px 30px 60px 30px;
+}
+
+/* ==========================================================================
+  5. Dashboard Ecommerce
+   ========================================================================== */
+
+   .dashboard-ecommerce {}
+
+
+   /* ----------------------- 
+2.3  Cards
+-------------------------*/
+
+.card {
+    margin-bottom: 30px;
+    border: none;
+    -webkit-box-shadow: 0px 1px 2px 1px rgba(154, 154, 204, 0.22);
+    -moz-box-shadow: 0px 1px 2px 1px rgba(154, 154, 204, 0.22);
+    box-shadow: 0px 1px 2px 1px rgba(154, 154, 204, 0.22);
+}
+
+
+/*----------------------- 
+ Color
+-------------------------*/
+.text-muted {
+    color: #7171a6 !important;
+}
+
+.text-success {
+    color: #2ec551 !important;
+}
+
+.text-success {
+    color: #2ec551 !important;
+}
+
+/*----------------------- 
+Borders
+-------------------------*/
+.border-3 {
+    border-width: 3px !important;
+}
+
+/*----------------------- 
+6.10 Metrics
+-------------------------*/
+
+.metric-value {
+    margin-bottom: 0;
+    line-height: 1;
+    white-space: nowrap;
+}
+
+
+
+
+
+.metric-label:last-child {
+    margin-top: 12px;
+    margin-bottom: 0;
+}
+
+.metric-label:last-child {
+    margin-top: .5rem;
+    margin-bottom: 0;
+}
+
+.metric-label {
+    font-size: .875rem;
+    font-weight: 500;
+    color: #686f76;
+    white-space: nowrap;
+}
+
+/*----------------------- 
+Background Color / Color
+-------------------------*/
+
+.bg-success-light {
+    background-color: #c5fad3 !important;
+}
+
+
+
+.icon-circle-small {
+    line-height: 1;
+    padding: 4px 2px;
+    text-align: center;
+    font-size: 12px;
+    display: inline-block;
+    border-radius: 100%;
+}
+
+
+.icon-box-xs {
+    height: 20px;
+    width: 20px;
 }
