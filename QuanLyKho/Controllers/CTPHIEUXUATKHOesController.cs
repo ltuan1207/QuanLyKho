@@ -17,8 +17,13 @@ namespace QuanLyKho.Controllers
         // GET: CTPHIEUXUATKHOes
         public ActionResult Index()
         {
-            var cTPHIEUXUATKHOes = db.CTPHIEUXUATKHOes.Include(c => c.PHIEUXUATKHO).Include(c => c.SANPHAM);
-            return View(cTPHIEUXUATKHOes.ToList());
+            if (Session["Taikhoan"] != null)
+            {
+                var cTPHIEUXUATKHOes = db.CTPHIEUXUATKHOes.Include(c => c.PHIEUXUATKHO).Include(c => c.SANPHAM);
+                return View(cTPHIEUXUATKHOes.ToList());
+            }
+            else
+                return RedirectToAction("Dangnhap", "Login");
         }
 
         // GET: CTPHIEUXUATKHOes/Details/5

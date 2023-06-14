@@ -1,4 +1,4 @@
-namespace QuanLyKho.Models
+﻿namespace QuanLyKho.Models
 {
     using System;
     using System.Collections.Generic;
@@ -16,11 +16,15 @@ namespace QuanLyKho.Models
         }
 
         [Key]
+        [Display(Name = "Mã nhóm sản phẩm")]
         public int MaNhomSP { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Tên nhóm sản phẩm không được để trống")]
+        [Display(Name = "Tên nhóm sản phẩm")]
         [StringLength(255)]
         public string TenNhomSP { get; set; }
+        [Required(ErrorMessage = "Mô tả không được để trống")]
+        [Display(Name = "Mô tả")]
 
         [StringLength(255)]
         public string Mota { get; set; }

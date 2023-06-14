@@ -12,10 +12,10 @@ namespace QuanLyKho.Models
         {
         }
 
-        public virtual DbSet<CTPHIEUNHAPKHO> CTPHIEUNHAPKHOes { get; set; }
-        public virtual DbSet<CTPHIEUXUATKHO> CTPHIEUXUATKHOes { get; set; }
         public virtual DbSet<CHITIETDONHANG> CHITIETDONHANGs { get; set; }
         public virtual DbSet<CHUCVU> CHUCVUs { get; set; }
+        public virtual DbSet<CTPHIEUNHAPKHO> CTPHIEUNHAPKHOes { get; set; }
+        public virtual DbSet<CTPHIEUXUATKHO> CTPHIEUXUATKHOes { get; set; }
         public virtual DbSet<DONHANG> DONHANGs { get; set; }
         public virtual DbSet<KHOHANG> KHOHANGs { get; set; }
         public virtual DbSet<NHACUNGCAP> NHACUNGCAPs { get; set; }
@@ -31,11 +31,11 @@ namespace QuanLyKho.Models
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Entity<CTPHIEUNHAPKHO>()
-                .Property(e => e.DoviTinh)
+                .Property(e => e.DonviTinh)
                 .IsUnicode(false);
 
             modelBuilder.Entity<CTPHIEUXUATKHO>()
-                .Property(e => e.DoviTinh)
+                .Property(e => e.DonviTinh)
                 .IsUnicode(false);
 
             modelBuilder.Entity<DONHANG>()

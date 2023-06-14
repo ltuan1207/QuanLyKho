@@ -2,9 +2,12 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.IO;
 using System.Linq;
 using System.Net;
+using System.Security.Cryptography;
+using System.Text;
 using System.Threading.Tasks;
 using System.Web;
 using System.Web.Mvc;
@@ -21,10 +24,24 @@ namespace QuanLyKho.Controllers
         private QLKhoDBContext db = new QLKhoDBContext();
 
         // GET: NHANVIENs
+        public static string GetMD5(string str)
+        {
+            MD5 md5 = new MD5CryptoServiceProvider();
+            byte[] fromData = Encoding.UTF8.GetBytes(str);
+            byte[] targetData = md5.ComputeHash(fromData);
+            string byte2String = null;
+
+            for (int i = 0; i < targetData.Length; i++)
+            {
+                byte2String += targetData[i].ToString("x2");
+
+            }
+            return byte2String;
+        }
         public ActionResult Index(String chucVu, int? page)
         {
-            /*if (Session["Taikhoan"] != null )
-            {*/
+            if (Session["Taikhoan"] != null )
+            {
                 var nhanVien = db.NHANVIENs.AsQueryable();
                 if (!string.IsNullOrEmpty(chucVu))
                 {
@@ -35,8 +52,8 @@ namespace QuanLyKho.Controllers
                 int pageNumber = (page ?? 1);
                 return View(nhanVien.ToPagedList(pageNumber, pageSize));
                 
-           /* }else 
-                return RedirectToAction("Dangnhap", "Login"); */
+            }else 
+                return RedirectToAction("Dangnhap", "Login"); 
             
             
         }
@@ -77,7 +94,7 @@ namespace QuanLyKho.Controllers
                     var fileName = Path.GetFileName(file.FileName);
                     nHANVIEN.ImgUrl = fileName;
                 }
-
+                nHANVIEN.MatKhau = GetMD5(nHANVIEN.MatKhau);
                 db.NHANVIENs.Add(nHANVIEN);
                 db.SaveChanges();
 
@@ -127,8 +144,13 @@ namespace QuanLyKho.Controllers
                     var path = Path.Combine(Server.MapPath("~/images/"), fileName);
                     file.SaveAs(path);
                 }
-
-                db.Entry(nHANVIEN).State = EntityState.Modified;
+                else
+                {
+                    var nhanVienCu = db.NHANVIENs.Find(nHANVIEN.MaNV);
+                    nHANVIEN.ImgUrl = nhanVienCu.ImgUrl;
+                }
+                nHANVIEN.MatKhau = GetMD5(nHANVIEN.MatKhau);
+                db.NHANVIENs.AddOrUpdate(nHANVIEN);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

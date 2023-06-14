@@ -17,23 +17,28 @@ namespace QuanLyKho.Controllers
         // GET: KHOHANGs
         public ActionResult Index(String thanhPho, String loaiKho)
         {
-            var khohang = db.KHOHANGs.AsQueryable();
-
-            if (!string.IsNullOrEmpty(thanhPho))
+            if (Session["Taikhoan"] != null)
             {
-                var diaChiFilter = thanhPho.Trim().ToLower();
-                var diaChiFilterEnd = diaChiFilter.Split(',').LastOrDefault()?.Trim();
-                if (!string.IsNullOrEmpty(diaChiFilterEnd))
+                var khohang = db.KHOHANGs.AsQueryable();
+
+                if (!string.IsNullOrEmpty(thanhPho))
                 {
-                    khohang = khohang.Where(ncc => ncc.DiaChi.ToLower().EndsWith(diaChiFilterEnd));
+                    var diaChiFilter = thanhPho.Trim().ToLower();
+                    var diaChiFilterEnd = diaChiFilter.Split(',').LastOrDefault()?.Trim();
+                    if (!string.IsNullOrEmpty(diaChiFilterEnd))
+                    {
+                        khohang = khohang.Where(ncc => ncc.DiaChi.ToLower().EndsWith(diaChiFilterEnd));
+                    }
                 }
-            }
-            if (!string.IsNullOrEmpty(loaiKho))
-            {
-                khohang = khohang.Where(sp => sp.LoaiKho == loaiKho);
-            }
+                if (!string.IsNullOrEmpty(loaiKho))
+                {
+                    khohang = khohang.Where(sp => sp.LoaiKho == loaiKho);
+                }
 
-            return View(khohang.ToList());
+                return View(khohang.ToList());
+            }
+            else
+                return RedirectToAction("Dangnhap", "Login");
         }
 
         // GET: KHOHANGs/Details/5

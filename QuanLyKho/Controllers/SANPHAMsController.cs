@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Data.Entity.Migrations;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
@@ -21,32 +22,37 @@ namespace QuanLyKho.Controllers
         // GET: SANPHAMs
         public ActionResult Index(String sortOrder, String nhomSP, int? page, string searchString)
         {
-            ViewBag.SortOrder = sortOrder;
-            var sanPham = db.SANPHAMs.AsQueryable();
+            if (Session["Taikhoan"] != null)
+            {
+                ViewBag.SortOrder = sortOrder;
+                var sanPham = db.SANPHAMs.AsQueryable();
 
-            if (!string.IsNullOrEmpty(nhomSP))
-            {
-                sanPham = sanPham.Where(sp => sp.NHOMSANPHAM.TenNhomSP == nhomSP);
+                if (!string.IsNullOrEmpty(nhomSP))
+                {
+                    sanPham = sanPham.Where(sp => sp.NHOMSANPHAM.TenNhomSP == nhomSP);
+                }
+                switch (sortOrder)
+                {
+                    case "asc":
+                        sanPham = sanPham.OrderBy(sp => sp.SoLuongTon);
+                        break;
+                    case "desc":
+                        sanPham = sanPham.OrderByDescending(sp => sp.SoLuongTon);
+                        break;
+                    case "asc-price":
+                        sanPham = sanPham.OrderBy(sp => sp.DonGia);
+                        break;
+                    case "desc-price":
+                        sanPham = sanPham.OrderByDescending(sp => sp.DonGia);
+                        break;
+                    default:
+                        sanPham = sanPham.OrderBy(sp => sp.TenSP);
+                        break;
+                }
+                return View(sanPham.ToList());
             }
-            switch (sortOrder)
-            {
-                case "asc":
-                    sanPham = sanPham.OrderBy(sp => sp.SoLuongTon);
-                    break;
-                case "desc":
-                    sanPham = sanPham.OrderByDescending(sp => sp.SoLuongTon);
-                    break;
-                case "asc-price":
-                    sanPham = sanPham.OrderBy(sp => sp.DonGia);
-                    break;
-                case "desc-price":
-                    sanPham = sanPham.OrderByDescending(sp => sp.DonGia);
-                    break;
-                default:
-                    sanPham = sanPham.OrderBy(sp => sp.TenSP);
-                    break;
-            }
-            return View(sanPham.ToList());
+            else
+                return RedirectToAction("Dangnhap", "Login");
         }
 
         // GET: SANPHAMs/Details/5
@@ -77,7 +83,7 @@ namespace QuanLyKho.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "MaSP,TenSP,Mota,DonGia,DonViTinh,SoLuongTon,NgayNhap,HinhAnh,MaNCC,MaNhomSP")] SANPHAM sANPHAM, HttpPostedFileBase file)
+        public ActionResult Create([Bind(Include = "MaSP,TenSP,Mota,DonGia,DonViTinh,SoLuongTon,NgayNhap,HinhAnh,KhoiLuong,MaNCC,MaNhomSP")] SANPHAM sANPHAM, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
@@ -126,7 +132,7 @@ namespace QuanLyKho.Controllers
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "MaSP,TenSP,Mota,DonGia,DonViTinh,SoLuongTon,NgayNhap,HinhAnh,MaNCC,MaNhomSP")] SANPHAM sANPHAM, HttpPostedFileBase file)
+        public ActionResult Edit([Bind(Include = "MaSP,TenSP,Mota,DonGia,DonViTinh,SoLuongTon,NgayNhap,HinhAnh,KhoiLuong,MaNCC,MaNhomSP")] SANPHAM sANPHAM, HttpPostedFileBase file)
         {
             if (ModelState.IsValid)
             {
@@ -138,8 +144,12 @@ namespace QuanLyKho.Controllers
                     var path = Path.Combine(Server.MapPath("~/images/"), fileName);
                     file.SaveAs(path);
                 }
-
-                db.Entry(sANPHAM).State = EntityState.Modified;
+                else
+                {
+                    var sanphamcu = db.SANPHAMs.Find(sANPHAM.MaSP);
+                    sANPHAM.HinhAnh = sanphamcu.HinhAnh;
+                }
+                db.SANPHAMs.AddOrUpdate(sANPHAM);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }

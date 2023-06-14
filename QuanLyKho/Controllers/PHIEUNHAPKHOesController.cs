@@ -17,7 +17,12 @@ namespace QuanLyKho.Controllers
         // GET: PHIEUNHAPKHOes
         public ActionResult Index()
         {
-            return View(db.PHIEUNHAPKHOes.ToList());
+            if (Session["Taikhoan"] != null)
+            {
+                return View(db.PHIEUNHAPKHOes.ToList());
+            }
+            else
+                return RedirectToAction("Dangnhap", "Login");
         }
 
         // GET: PHIEUNHAPKHOes/Details/5

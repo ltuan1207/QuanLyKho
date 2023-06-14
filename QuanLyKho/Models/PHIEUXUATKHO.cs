@@ -1,4 +1,4 @@
-namespace QuanLyKho.Models
+﻿namespace QuanLyKho.Models
 {
     using System;
     using System.Collections.Generic;
@@ -16,12 +16,17 @@ namespace QuanLyKho.Models
         }
 
         [Key]
+        [Display(Name = "Mã phiếu xuất kho")]
         public int MaPXK { get; set; }
+        [Required(ErrorMessage = "Ngày xuất kho không được để trống")]
+        [Display(Name = "Ngày xuất kho ")]
 
-        [Column(TypeName = "date")]
         public DateTime NgayXuat { get; set; }
+        [Display(Name = "Tổng giá trị xuất ")]
 
-        public int TongGTXuat { get; set; }
+
+        public long TongGTXuat { get; set; }
+
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
         public virtual ICollection<CTPHIEUXUATKHO> CTPHIEUXUATKHOes { get; set; }

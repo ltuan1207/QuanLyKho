@@ -17,8 +17,13 @@ namespace QuanLyKho.Controllers
         // GET: VITRISPs
         public ActionResult Index()
         {
-            var vITRISPs = db.VITRISPs.Include(v => v.SANPHAM).Include(v => v.VITRIKHO);
-            return View(vITRISPs.ToList());
+            if (Session["Taikhoan"] != null)
+            {
+                var vITRISPs = db.VITRISPs.Include(v => v.SANPHAM).Include(v => v.VITRIKHO);
+                return View(vITRISPs.ToList());
+            }
+            else
+                return RedirectToAction("Dangnhap", "Login");
         }
 
         // GET: VITRISPs/Details/5

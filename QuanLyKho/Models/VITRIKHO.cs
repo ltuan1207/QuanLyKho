@@ -1,4 +1,4 @@
-namespace QuanLyKho.Models
+﻿namespace QuanLyKho.Models
 {
     using System;
     using System.Collections.Generic;
@@ -18,15 +18,21 @@ namespace QuanLyKho.Models
         }
 
         [Key]
+        [Display(Name = "Mã vị trí kho")]
         public int MaVTK { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Tên vị trí kho không được bỏ trống")]
+        [Display(Name = "Tên vị trí kho")]
         [StringLength(255)]
         public string TenVTK { get; set; }
 
+
+        [Required(ErrorMessage = "Mời nhập mô tả ")]
+        [Display(Name = "Mô tả")]
         [StringLength(255)]
         public string MoTa { get; set; }
 
+        [Display(Name = "Mã kho hàng")]
         public int MaKhoHang { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

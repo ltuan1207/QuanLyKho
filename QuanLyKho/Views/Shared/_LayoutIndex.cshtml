@@ -27,7 +27,7 @@
                         </li>
                         <li class="nav-item dropdown nav-user">
                             <a class="nav-link nav-user-img" href="#" id="navbarDropdownMenuLink2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <img src="~/images/@Session["anhNV"]" alt class="user-avatar-md rounded-circle">
+                                <img src="~/images/@Session["anhNV"]" class="user-avatar-md rounded-circle">
                             </a>
                             <div class="dropdown-menu dropdown-menu-right nav-user-dropdown" aria-labelledby="navbarDropdownMenuLink2">
                                 <div class="nav-user-info">
@@ -72,7 +72,7 @@
                                     <div id="submenu-1" class="submenu collapse show">
                                         <ul class="nav flex-column">
                                             <li class="nav-divider"><a href="@Url.Action("Index", "NHANVIENs")" style="color:white"><i class="fas fa-id-card"></i>  Nhân Viên</a></li>
-                                            <li class="nav-divider"><a href="@Url.Action("Index", "CHUCVUs")" style="color:white"><i class="fas fa-user-tie"></i>  Chúc Vụ</a></li>
+                                            <li class="nav-divider"><a href="@Url.Action("Index", "CHUCVUs")" style="color:white"><i class="fas fa-user-tie"></i>  Chức Vụ</a></li>
                                         </ul>
                                     </div>
                                 </li>
@@ -91,6 +91,9 @@
                                             <li class="nav-divider"><a href="@Url.Action("Index", "PHIEUNHAPKHOes")" style="color:white"><i class="fas fa-clipboard"></i> Phiếu nhập Kho </a></li>
                                             <li class="nav-divider"><a href="@Url.Action("Index", "PHIEUXUATKHOes")" style="color:white"><i class="fas fa-clipboard-check"></i> Phiếu xuất Kho </a></li>
                                             <li class="nav-divider"><a href="@Url.Action("Index", "DONHANGs")" style="color:white"><i class="fas fa-clipboard-list"></i> Đơn hàng </a></li>
+                                            <li class="nav-divider"><a href="@Url.Action("Index", "CTPHIEUNHAPKHOes")" style="color:white"><i class="fas fa-clipboard"></i>Chi tiết phiếu nhập Kho </a></li>
+                                            <li class="nav-divider"><a href="@Url.Action("Index", "CTPHIEUXUATKHOes")" style="color:white"><i class="fas fa-clipboard-check"></i> Chi tiết phiếu xuất Kho </a></li>
+
                                         </ul>
                                     </div>
                                 </li>

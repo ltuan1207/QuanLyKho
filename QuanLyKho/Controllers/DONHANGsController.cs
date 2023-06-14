@@ -17,7 +17,12 @@ namespace QuanLyKho.Controllers
         // GET: DONHANGs
         public ActionResult Index()
         {
-            return View(db.DONHANGs.ToList());
+            if (Session["Taikhoan"] != null)
+            {
+                return View(db.DONHANGs.ToList());
+            }
+            else
+                return RedirectToAction("Dangnhap", "Login");
         }
 
         // GET: DONHANGs/Details/5

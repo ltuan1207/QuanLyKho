@@ -1,4 +1,4 @@
-namespace QuanLyKho.Models
+﻿namespace QuanLyKho.Models
 {
     using System;
     using System.Collections.Generic;
@@ -16,24 +16,31 @@ namespace QuanLyKho.Models
         }
 
         [Key]
+        [Display(Name ="Mã kho hàng")]
         public int MaKhoHang { get; set; }
 
-        [Required]
-        [StringLength(200)]
-        public string LoaiKho { get; set; }
+        [Display(Name ="Loại kho")]
+        public String LoaiKho { get; set; }
 
-        [Required]
+
+        [Required(ErrorMessage = "Tên kho hàng không được để trống")]
+        [Display(Name = "Tên kho hàng")]
         [StringLength(255)]
         public string TenKhohang { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Địa chỉ kho hàng không được để trống.")]
+        [Display(Name = "Địa chỉ")]
         [StringLength(255)]
         public string DiaChi { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Số điện thoại đơn hàng không được để trống")]
+        [RegularExpression(@"^0\d{9,10}$", ErrorMessage = "Số điện thoại không hợp lệ")]
+        [Display(Name = "Số điện thoại kho hàng")]
         [StringLength(20)]
         public string SDTKho { get; set; }
 
+        [Required(ErrorMessage ="Sức chứa không được để trống")]
+        [Display(Name ="Sức chứa")]
         public int Succhua { get; set; }
 
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]

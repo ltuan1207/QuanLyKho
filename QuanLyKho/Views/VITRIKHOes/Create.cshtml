@@ -18,7 +18,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.TenVTK, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.TenVTK, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.TenVTK, new { htmlAttributes = new { @class = "form-control", placeholder = "Nhập tên vị trí kho" } })
                 @Html.ValidationMessageFor(model => model.TenVTK, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -26,7 +26,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.MoTa, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.MoTa, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.MoTa, new { htmlAttributes = new { @class = "form-control", placeholder = "Nhập mô tả" } })
                 @Html.ValidationMessageFor(model => model.MoTa, "", new { @class = "text-danger" })
             </div>
         </div>

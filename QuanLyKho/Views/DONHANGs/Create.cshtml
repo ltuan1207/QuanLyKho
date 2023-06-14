@@ -18,7 +18,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.KhachHang, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.KhachHang, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.KhachHang, new { htmlAttributes = new { @class = "form-control", placeholder = "Nhập khách hàng" } })
                 @Html.ValidationMessageFor(model => model.KhachHang, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -26,7 +26,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.DiaChi, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.DiaChi, new { htmlAttributes = new { @class = "form-control", placeholder = "Nhập địa chỉ" } })
                 @Html.ValidationMessageFor(model => model.DiaChi, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -34,7 +34,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.SDT, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.SDT, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.SDT, new { htmlAttributes = new { @class = "form-control", placeholder = "Nhập số điện thoại" } })
                 @Html.ValidationMessageFor(model => model.SDT, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -42,7 +42,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.NgayLapDonHang, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.NgayLapDonHang, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.NgayLapDonHang, new { htmlAttributes = new { @class = "form-control", placeholder = "Nhập ngày lập đơn hàng" } })
                 @Html.ValidationMessageFor(model => model.NgayLapDonHang, "", new { @class = "text-danger" })
             </div>
         </div>

@@ -17,19 +17,24 @@ namespace QuanLyKho.Controllers
         // GET: NHACUNGCAPs
         public ActionResult Index(String thanhPho)
         {
-            var nhaCungCap = db.NHACUNGCAPs.AsQueryable();
-
-            if (!string.IsNullOrEmpty(thanhPho))
+            if (Session["Taikhoan"] != null)
             {
-                var diaChiFilter = thanhPho.Trim().ToLower();
-                var diaChiFilterEnd = diaChiFilter.Split(',').LastOrDefault()?.Trim();
-                if (!string.IsNullOrEmpty(diaChiFilterEnd))
-                {
-                    nhaCungCap = nhaCungCap.Where(ncc => ncc.DiachiNCC.ToLower().EndsWith(diaChiFilterEnd));
-                }
-            }
+                var nhaCungCap = db.NHACUNGCAPs.AsQueryable();
 
-            return View(nhaCungCap.ToList());
+                if (!string.IsNullOrEmpty(thanhPho))
+                {
+                    var diaChiFilter = thanhPho.Trim().ToLower();
+                    var diaChiFilterEnd = diaChiFilter.Split(',').LastOrDefault()?.Trim();
+                    if (!string.IsNullOrEmpty(diaChiFilterEnd))
+                    {
+                        nhaCungCap = nhaCungCap.Where(ncc => ncc.DiachiNCC.ToLower().EndsWith(diaChiFilterEnd));
+                    }
+                }
+
+                return View(nhaCungCap.ToList());
+            }
+            else
+                return RedirectToAction("Dangnhap", "Login");
         }
 
         // GET: NHACUNGCAPs/Details/5

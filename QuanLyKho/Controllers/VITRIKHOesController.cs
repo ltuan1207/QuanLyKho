@@ -17,8 +17,13 @@ namespace QuanLyKho.Controllers
         // GET: VITRIKHOes
         public ActionResult Index()
         {
-            var vITRIKHOes = db.VITRIKHOes.Include(v => v.KHOHANG);
-            return View(vITRIKHOes.ToList());
+            if (Session["Taikhoan"] != null)
+            {
+                var vITRIKHOes = db.VITRIKHOes.Include(v => v.KHOHANG);
+                return View(vITRIKHOes.ToList());
+            }
+            else
+                return RedirectToAction("Dangnhap", "Login");
         }
 
         // GET: VITRIKHOes/Details/5

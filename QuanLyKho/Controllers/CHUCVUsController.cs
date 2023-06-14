@@ -17,7 +17,12 @@ namespace QuanLyKho.Controllers
         // GET: CHUCVUs
         public ActionResult Index()
         {
-            return View(db.CHUCVUs.ToList());
+            if (Session["Taikhoan"] != null)
+            {
+                return View(db.CHUCVUs.ToList());
+            }
+            else
+                return RedirectToAction("Dangnhap", "Login");
         }
 
         // GET: CHUCVUs/Details/5

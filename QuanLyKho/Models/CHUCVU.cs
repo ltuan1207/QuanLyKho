@@ -1,4 +1,4 @@
-namespace QuanLyKho.Models
+﻿namespace QuanLyKho.Models
 {
     using System;
     using System.Collections.Generic;
@@ -16,11 +16,15 @@ namespace QuanLyKho.Models
         }
 
         [Key]
+        [Display(Name = "Mã chức vụ")]
         public int MaCV { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Tên chức vụ không được để trống")]
+        [Display(Name = "Tên chức vụ:")]
         [StringLength(255)]
         public string TenCV { get; set; }
+        [Required(ErrorMessage = "Mô tả không được để trống")]
+        [Display(Name = "Mô tả")]
 
         [StringLength(255)]
         public string MoTa { get; set; }

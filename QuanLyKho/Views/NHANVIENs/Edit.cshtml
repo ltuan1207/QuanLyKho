@@ -45,6 +45,7 @@
         <div class="form-group">
             <label class="control-label col-md-2" for="ImgUrl">Hình ảnh:</label>
             <div class="col-md-10">
+                <img src="~/images/@Model.ImgUrl" style="width:100px"/>
                 <input type="file" name="file" id="ImgUrl" class="form-control" />
                 @Html.ValidationMessageFor(model => model.ImgUrl, "", new { @class = "text-danger" })
             </div>
